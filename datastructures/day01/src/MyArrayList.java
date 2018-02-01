@@ -38,7 +38,7 @@ public class MyArrayList {
     public Cow remove(int index) {
         indexCheck(index);
         Cow reMooved = cows[index];
-        for (int i = index; i <= size(); i++){
+        for (int i = index; i <= size()-1; i++){
             cows[i] = cows[i+1];
         }
         size--;
@@ -49,8 +49,22 @@ public class MyArrayList {
     public void add(int index, Cow c) {
         indexCheck(index);
         if (size() == cows.length) {
-            resize();
+            Cow[] moreCows = new Cow[cows.length*2];
+            System.arraycopy(cows, 0,  moreCows, 0, moreCows.length);
+            cows = moreCows;
         }
+        if (size() < cows.length/4) {
+            int halfSize = cows.length/2;
+            if (halfSize <= 1) {
+                halfSize = 2;
+            }
+            else {
+                Cow[] lessCows = new Cow[halfSize];
+                System.arraycopy(cows, 0, lessCows,0, halfSize);
+                cows = lessCows;
+            }
+        }
+
         for (int i = size(); i > index; i--) {
             cows[i] = cows[i - 1];
         }
