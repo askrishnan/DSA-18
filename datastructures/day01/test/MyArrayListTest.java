@@ -83,7 +83,6 @@ public class MyArrayListTest {
             String color = "Color" + i;
             resizeCows.add(new Cow(name,age,color));
         }
-
         assertEquals(1000,resizeCows.size());
         assertEquals(new Cow("Cow996", 996, "Color996"),resizeCows.get(996));
     }
