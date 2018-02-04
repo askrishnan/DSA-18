@@ -14,17 +14,23 @@ public class MyPriorityQueue {
     }
 
     public void enqueue(int item) {
-        if (ll.isEmpty() || item >= ll.peekLast()) {
+        if (ll.isEmpty()) {
             ll.add(item);
         }
         else {
             temp = new LinkedList<>();
-            while (item < ll.peekLast()) {
-                temp.add(ll.removeLast());
+            while (!ll.isEmpty() && item > ll.peek()) {
+                temp.add(ll.remove());
             }
-            ll.add(item);
-            while (!temp.isEmpty()) {
-                ll.add(temp.removeLast());
+            temp.add(item);
+            if (ll.isEmpty()) {
+                ll = temp;
+            }
+            else {
+                while (!ll.isEmpty()) {
+                    temp.add(ll.remove());
+                }
+                ll = temp;
             }
         }
     }
