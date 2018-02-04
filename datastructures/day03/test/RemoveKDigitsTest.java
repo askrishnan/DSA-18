@@ -9,6 +9,7 @@ public class RemoveKDigitsTest {
      */
     @Test
     public void testRemoveKDigits() {
+        /*
         int[] in = new int[]{1, 4, 3, 2, 2, 1, 9};
         Object[] out = Problems.removeKDigits(in, 3).toArray();
         assertArrayEquals(new Integer[]{1, 2, 1, 9}, out);
@@ -20,9 +21,10 @@ public class RemoveKDigitsTest {
         in = new int[]{8, 5, 9, 3, 4, 3};
         out = Problems.removeKDigits(in, 2).toArray();
         assertArrayEquals(new Integer[]{5, 3, 4, 3}, out);
+*/
 
-        in = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9};
-        out = Problems.removeKDigits(in, 5).toArray();
+        int[] in = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9};
+        Object[] out = Problems.removeKDigits(in, 5).toArray();
         assertArrayEquals(new Integer[]{1, 2, 3, 4}, out);
 
         in = new int[]{1, 2, 3, 1, 5, 6, 7, 2, 9};

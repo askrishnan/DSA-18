@@ -13,10 +13,24 @@ public class Problems {
     }
 
     public static List<Integer> removeKDigits(int[] A, int k) {
-        // TODO: your code here
-        // For now, return a List that's correct size, but contains only 0s
         List<Integer> l = new LinkedList<>();
-        for (int i = 0; i < A.length - k; i++) l.add(0);
+        int listLength = 0;
+        int finLength = A.length - k;
+            for (int i = 0; i < A.length; i++) {
+                if (k == 0 && listLength < finLength) {
+                    l.add(A[i]);
+                }
+                else if (listLength == finLength) {
+                    return l;
+                }
+                else if (A[i] <= A[i + 1] ) {
+                    l.add(A[i]);
+                    listLength++;
+                }
+                else {
+                    k--;
+                }
+            }
         return l;
     }
 
