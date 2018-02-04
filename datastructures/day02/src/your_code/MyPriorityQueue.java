@@ -11,22 +11,20 @@ public class MyPriorityQueue {
 
     public MyPriorityQueue() {
         ll = new LinkedList<>();
-        temp = new LinkedList<>();
     }
 
     public void enqueue(int item) {
-        if (ll.isEmpty()) {
+        if (ll.isEmpty() || item >= ll.peekLast()) {
             ll.add(item);
         }
         else {
-            if (item > ll.peekFirst()) {
-                    temp.addLast(ll.removeFirst());
+            temp = new LinkedList<>();
+            while (item < ll.peekLast()) {
+                temp.add(ll.removeLast());
             }
-            if (item <= ll.peekFirst()) {
-                temp.addLast(item);
-            }
+            ll.add(item);
             while (!temp.isEmpty()) {
-                ll.addFirst(temp.removeFirst());
+                ll.add(temp.removeLast());
             }
         }
     }
@@ -38,5 +36,4 @@ public class MyPriorityQueue {
         int largest = ll.removeLast();
         return largest;
     }
-
 }
