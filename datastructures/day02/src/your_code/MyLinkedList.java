@@ -80,10 +80,11 @@ public class MyLinkedList {
 
     public Chicken get(int index) {
         indexCheck(index);
-        Node new_node = head;
+        Node new_node = head; // don't have to create a new node since I already have head!
         for (int i=0; i<index; i++) {
             new_node = new_node.next;
         }
+        // add in if statement for tail!
 
         Chicken foundChicken = new_node.val;
         return foundChicken;
