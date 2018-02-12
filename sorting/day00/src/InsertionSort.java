@@ -12,7 +12,17 @@ public class InsertionSort extends SortAlgorithm {
      */
     @Override
     public int[] sort(int[] array) {
-        // TODO
-        return new int[0];
+        int n = array.length;
+        for (int i = 1; i < n; i++) {
+            int key = array[i];
+            int p = i-1;
+            while (p >= 0 && array[p] > key) {
+                array[p + 1] = array[p];
+                p--;
+            }
+            array[p+1] = key;
+        }
+        return array;
     }
+
 }
