@@ -4,11 +4,11 @@ public class InsertionSort extends SortAlgorithm {
      * Use the insertion sort algorithm to sort the array
      *
      * TODO
-     * Best-case runtime:
-     * Worst-case runtime:
-     * Average-case runtime:
+     * Best-case runtime: O(N^2)
+     * Worst-case runtime: O(N^2)
+     * Average-case runtime: O(N^2)
      *
-     * Space-complexity:
+     * Space-complexity: O(1)
      */
     @Override
     public int[] sort(int[] array) {
