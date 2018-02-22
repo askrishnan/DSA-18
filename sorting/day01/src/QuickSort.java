@@ -12,11 +12,11 @@ public class QuickSort extends SortAlgorithm {
 
     /**
      * TODO
-     * Best-case runtime:
-     * Worst-case runtime:
-     * Average-case runtime:
+     * Best-case runtime: O(nlogn)
+     * Worst-case runtime: O(nlogn)
+     * Average-case runtime: O(n^2)
      *
-     * Space-complexity:
+     * Space-complexity: O(1)
      */
     @Override
     public int[] sort(int[] array) {
@@ -48,7 +48,11 @@ public class QuickSort extends SortAlgorithm {
      * Place all elements smaller than "pivot" on "pivot"'s left, and all others
      * on its right. Return the final position of "pivot" in the partitioned array.
      *
-     * @param lo The beginning index of the subarray being considered (inclusive)
+     * @param lo The beginni     * Best-case runtime: O(nlogn)
+     * Worst-case runtime: O(nlogn)
+     * Average-case runtime: O(nlogn)
+     *
+     * Space-complexity: O(1)ng index of the subarray being considered (inclusive)
      * @param hi The ending index of the subarray being considered (inclusive)
      */
     public int partition(int[] array, int lo, int hi) {
