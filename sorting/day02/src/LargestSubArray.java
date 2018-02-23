@@ -18,7 +18,7 @@ public class LargestSubArray {
             sums[i] = sum;
         }
 
-        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+        HashMap<Integer, Integer> map = new HashMap<>();
         int finArrSize = 0;
         int endInd = 0;
         for (int i = 0; i < length; i++) {
@@ -37,7 +37,7 @@ public class LargestSubArray {
             }
         }
 
-        int finStart = endInd - finArrSize+1;
+        int finStart = endInd - finArrSize + 1;
         int[] finRange = {finStart, endInd};
         return finRange;
     }
