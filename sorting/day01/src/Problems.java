@@ -46,7 +46,7 @@ public class Problems {
         PriorityQueue<Integer> before = maxPQ();
         PriorityQueue<Integer> after = minPQ();
 
-        for (int i = 0; i<inputStream.length; i++) {
+        for (int i = 0; i<inputStream.length; i++) { //O(N)
             if (i==0 || inputStream[i] < before.peek()) {
                 before.offer(inputStream[i]);
             }
@@ -55,7 +55,7 @@ public class Problems {
             }
 
             while (before.size() > after.size() + 1) {
-                after.offer(before.poll());
+                after.offer(before.poll()); //O(1)
             }
             while (after.size() > before.size() + 1) {
                 before.offer(after.poll());
