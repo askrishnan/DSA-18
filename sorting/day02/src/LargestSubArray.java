@@ -1,8 +1,11 @@
 import java.util.HashMap;
 
+// Runtime is O(N)
+
 public class LargestSubArray {
     static int[] largestSubarray(int[] nums) {
         // Following the hint, and treating 0s as negative 1.
+        // Create a hashmap that has all of the sums and their indices
         HashMap<Integer, Integer> sum_indices = new HashMap<Integer, Integer>();
         int sum = 0;
         // Convert 0's to -1's
@@ -19,6 +22,7 @@ public class LargestSubArray {
             if (nums.length - i <= total_size ) {
                 break;
             }
+            // Otherwise, just check if we've found a larger piece
             int largest_index = sum_indices.get(sum);
             if (largest_index - i > total_size) {
                 total_size = largest_index - i;

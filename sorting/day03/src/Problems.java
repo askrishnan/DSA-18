@@ -1,7 +1,17 @@
+import java.util.LinkedList;
+
 public class Problems {
 
     static void sortNumsBetween100s(int[] A) {
-        // TODO
+        // O(W(n + k))
+        // We need positive values...
+        for (int i = 0; i < A.length; i++) {
+            A[i] += 101;
+        }
+        RadixSort.radixSort(A, 10);
+        for (int i = 0; i < A.length; i++) {
+            A[i] -= 101;
+        }
     }
 
     /**
@@ -19,14 +29,34 @@ public class Problems {
      * @param n The digit number (where 0 is the least significant digit)
      */
     static void countingSortByCharacter(String[] A, int n) {
-        // TODO
+        int buckets = 26;
+        LinkedList<String>[] list_a = new LinkedList[buckets];
+        for (int i = 0; i < buckets; i ++) {
+            list_a[i] = new LinkedList<>();
+        }
+        for (String i : A) {
+            int char_val = getNthCharacter(i, n);
+            list_a[char_val].add(i);
+        }
+
+        int i = 0;
+        for (LinkedList<String> vals : list_a) {
+            while (!vals.isEmpty()) {
+                A[i] = vals.poll();
+                i++;
+            }
+        }
     }
 
     /**
      * @param stringLength The length of each of the strings in S
      */
     static void sortStrings(String[] S, int stringLength) {
-        // TODO
+        // This is like radix sort, but different. Runtime would be O(w(n + k))
+        for (int i = 0; i < stringLength; i++) {
+            countingSortByCharacter(S, i);
+
+        }
     }
 
     /**

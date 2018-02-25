@@ -3,7 +3,10 @@ import java.util.HashMap;
 public class FrequencyPrint {
 
     static String frequencyPrint(String s) {
-        // TODO
+        // I think this is O(nlogn), but also I have no clue
+        //
+
+        // Place all of the words in a hashmap with the frequencies.
         HashMap<String, Integer> word_map = new HashMap<String, Integer>();
         String[] words_list = s.split("\\s+");
         for (int i = 0; i < words_list.length; i++) {
@@ -16,7 +19,7 @@ public class FrequencyPrint {
             }
 
         }
-
+        // This is horrific but it inverts the keys and values.
         HashMap<Integer, String> sorted_map = new HashMap<Integer, String>();
         for (Object i : word_map.keySet()) {
             if (sorted_map.get(word_map.get(i)) != null) {
@@ -34,6 +37,7 @@ public class FrequencyPrint {
             }
         }
 
+        // Make a huge output string and toss it.
         String output_string = "";
 
         for (Object i : sorted_map.keySet()) {
