@@ -1,7 +1,16 @@
+import java.util.LinkedList;
+
 public class Problems {
 
     static void sortNumsBetween100s(int[] A) {
-        // TODO
+        for(int i=0; i<A.length; i++){
+            A[i] = A[i] + 100;
+        }
+        CountingSort.countingSort(A);
+        for(int i=0; i<A.length; i++){
+            A[i] = A[i] - 100;
+        }
+
     }
 
     /**
@@ -19,7 +28,23 @@ public class Problems {
      * @param n The digit number (where 0 is the least significant digit)
      */
     static void countingSortByCharacter(String[] A, int n) {
-        // TODO
+        LinkedList<String>[] list = new LinkedList[26];
+        for (int i = 0; i < 26; i++) {
+            list[i] = new LinkedList<>();
+        }
+        for (String i : A) {
+            list[getNthCharacter(i, n)].add(i);
+        }
+        int j = 0;
+        for (LinkedList<String> list2: list) {
+            if (list2.size() != 0) {
+                for (int k = 0; k < list2.size(); k++) {
+                    A[j] = list2.get(k);
+                    j++;
+                }
+            }
+        }
+
     }
 
     /**
@@ -27,6 +52,10 @@ public class Problems {
      */
     static void sortStrings(String[] S, int stringLength) {
         // TODO
+        for (int i = 0; i < stringLength; i++)
+        {
+            countingSortByCharacter(S, i);
+        }
     }
 
     /**
