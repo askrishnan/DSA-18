@@ -5,6 +5,7 @@ public class RadixSort {
     /**
      * @param n the digit number, 0 is least significant
      * @return
+     * If K < NlogN
      */
     private static int getNthDigit(int number, int base, int n) {
         return number / ((int) Math.pow(base, n)) % base;
@@ -38,7 +39,7 @@ public class RadixSort {
     /**
      * Runtime: O(W(n+b))
      * TODO: Express your runtime in terms of n, b, and w
-     *
+     * super long if word length is greater than logN
      * n: length of array
      * w: word length of integers A in base b (equal to log base b of k (log_b k) )
      *

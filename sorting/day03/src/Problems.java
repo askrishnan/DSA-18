@@ -38,8 +38,8 @@ public class Problems {
         int j = 0;
         for (LinkedList<String> list2: list) {
             if (list2.size() != 0) {
-                for (int k = 0; k < list2.size(); k++) {
-                    A[j] = list2.get(k);
+                for (String s : list2) {
+                    A[j] = s;
                     j++;
                 }
             }

@@ -13,13 +13,14 @@ public class CountingSort {
     static void countingSort(int[] A) {
 
         // create a List to put the array values into to find the max
-        List<Integer> list = new ArrayList<Integer>(A.length);
+        List<Integer> list = new ArrayList<>(A.length);
 
         // place each array value into the list
         for (int i = 0; i < A.length; i++) {
             list.add(A[i]);
         }
 
+        // or just write the max function
         // find the maximum element in A (need to use a list w/ Collections.max)
         int k = Collections.max(list) + 1; //add one so range is 0-k
         int[] counts = new int[k];
