@@ -6,6 +6,9 @@ public class CountingSort {
     /**
      * Use counting sort to sort positive integer array A.
      * Runtime: O(N+K)
+=======
+     * Use counting sort to sort non-negative integer array A.
+     * Runtime: O(N)
      *
      * k: maximum element in array A
      */
