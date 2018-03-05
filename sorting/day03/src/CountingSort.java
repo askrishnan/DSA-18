@@ -5,8 +5,13 @@ import java.util.List;
 public class CountingSort {
 
     /**
+<<<<<<< HEAD
      * Use counting sort to sort positive integer array A.
      * Runtime: O(n + k)
+=======
+     * Use counting sort to sort non-negative integer array A.
+     * Runtime: TODO
+>>>>>>> 36d97f25cf2f04bab6968f6738ddb01e54578262
      *
      * k: maximum element in array A
      */
