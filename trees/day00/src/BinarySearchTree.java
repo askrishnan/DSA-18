@@ -1,3 +1,6 @@
+import jdk.nashorn.api.tree.Tree;
+
+import java.util.LinkedList;
 import java.util.List;
 
 public class BinarySearchTree<T extends Comparable<T>> {
@@ -28,8 +31,19 @@ public class BinarySearchTree<T extends Comparable<T>> {
     }
 
     public List<T> inOrderTraversal() {
-        // TODO
-        return null;
+        // Worst Case Runtime: O(N) -> going through each element once
+        List<T> inOrder = new LinkedList<>();
+        TreeNode<T> curr = findMin(root);
+        if (curr == null) {
+            return inOrder;
+        }
+
+        while (findSuccessor(curr) != null) {
+            inOrder.add(curr.key);
+            curr = findSuccessor(curr);
+        }
+        inOrder.add(curr.key);
+        return inOrder;
     }
 
     /**
@@ -58,16 +72,20 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
         TreeNode<T> replacement;
 
-        if (n.isLeaf())
+        if (n.isLeaf()) {
             // Case 1: no children
             replacement = null;
-        else if (n.hasRightChild() != n.hasLeftChild())
+        }
+        else if (n.hasRightChild() != n.hasLeftChild()) {
             // Case 2: one child
             replacement = (n.hasRightChild()) ? n.rightChild : n.leftChild; // replacement is the non-null child
+        }
+
         else {
             // Case 3: two children
-            // TODO
-            replacement = null;
+            replacement = findPredecessor(n);
+            delete(replacement); //replaces the replacement value
+            replacement.moveChildrenFrom(n); //moves children from deleted value to its replacement
         }
 
         // Put the replacement in its correct place, and set the parent.
@@ -95,14 +113,68 @@ public class BinarySearchTree<T extends Comparable<T>> {
         return null;
     }
 
+    // Worst Case Runtime: 0(N) for descending sorted BST
     private TreeNode<T> findPredecessor(TreeNode<T> n) {
-        // TODO
+        if (n.hasLeftChild()) {
+            //finds the largest value below n
+            return findMax(n.leftChild);
+        }
+        // includes the case if n is a rightChild that returns the parent
+        else {
+            TreeNode<T> temp = n;
+            while(temp.isLeftChild()){
+                // moves up the tree until it finds when the number is a right child (aka greater than the parent)
+                temp = temp.parent;
+            }
+            if (temp.isRightChild()) {
+                //finds n's smaller parent
+                return temp.parent;
+            }
+        }
+        // if nothing else works
         return null;
     }
 
+    // Worst Case Runtime: 0(N) for ascending sorted BST
     private TreeNode<T> findSuccessor(TreeNode<T> n) {
-        // TODO
+        if (n.hasRightChild()) {
+            //finds the smallest value above n
+            return findMin(n.rightChild);
+        }
+
+        // includes the case if n is a leftChild that returns the parent
+        else {
+            TreeNode<T> temp = n;
+            while(temp.isRightChild()){
+                // moves up the tree until it finds when the number is a left child (aka less than the parent)
+                temp = temp.parent;
+            }
+            if (temp.isLeftChild()) {
+                //finds n's greater parent
+                return temp.parent;
+            }
+        }
+        // if nothing else works
         return null;
+    }
+
+    private TreeNode<T> findMin(TreeNode<T> n){
+        // finds minimum of the values below n
+        if (n == null) {
+            return null;
+        }
+        if (!n.hasLeftChild()) {
+            return n;
+        }
+        return findMin(n.leftChild);
+    }
+
+    private TreeNode<T> findMax(TreeNode<T> n){
+        // finds maximum of the values below n
+        if (!n.hasRightChild()) {
+            return n;
+        }
+        return findMax(n.rightChild);
     }
 
     /**
