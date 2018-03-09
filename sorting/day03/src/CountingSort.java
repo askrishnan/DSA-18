@@ -4,11 +4,16 @@ import java.util.Collections;
 public class CountingSort {
 
     /**
+<<<<<<< HEAD
      * Use counting sort to sort positive integer array A.
      * Runtime: O(N+K)
 =======
      * Use counting sort to sort non-negative integer array A.
      * Runtime: O(N)
+=======
+     * Use counting sort to sort non-negative integer array A.
+     * Runtime: TODO
+>>>>>>> 1c26bfec866394d2c6a63434e361921836ce41ab
      *
      * k: maximum element in array A
      */
