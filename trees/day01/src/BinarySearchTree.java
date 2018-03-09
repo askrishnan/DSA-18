@@ -20,6 +20,12 @@ public class BinarySearchTree<T extends Comparable<T>> {
         return true;
     }
 
+    public boolean addDup(T key) {
+        root = insert(root, key);
+        size++;
+        return true;
+    }
+
     public void addAll(T[] keys) {
         for (T k : keys)
             add(k);
@@ -73,7 +79,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
     /**
      * Returns the node with the smallest key in the subtree.
      */
-    private TreeNode<T> min(TreeNode<T> x) {
+    TreeNode<T> min(TreeNode<T> x) {
         if (x.leftChild == null) return x;
         return min(x.leftChild);
     }
