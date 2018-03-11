@@ -28,19 +28,33 @@ public class RedBlackTree<T extends Comparable<T>> extends BinarySearchTree<T> {
 
     // make a left-leaning link lean to the right
     TreeNode<T> rotateRight(TreeNode<T> h) {
-        // TODO
-        return h;
+        TreeNode<T> i =  h.leftChild;
+        h.leftChild = i.rightChild;
+        i.rightChild = h;
+        i.color = i.rightChild.color;
+        i.rightChild.color = RED;
+        return i;
     }
 
     // make a right-leaning link lean to the left
     TreeNode<T> rotateLeft(TreeNode<T> h) {
-        // TODO
-        return h;
+        TreeNode<T> i =  h.rightChild;
+        h.rightChild = i.leftChild;
+        i.leftChild = h;
+        i.color = i.leftChild.color;
+        i.leftChild.color = RED;
+        return i;
+
+
     }
 
     // flip the colors of a TreeNode and its two children
     TreeNode<T> flipColors(TreeNode<T> h) {
         // TODO
+
+        h.color = !(h.color);
+        h.leftChild.color = !(h.leftChild.color);
+        h.rightChild.color = !(h.rightChild.color);
         return h;
     }
 
@@ -53,8 +67,19 @@ public class RedBlackTree<T extends Comparable<T>> extends BinarySearchTree<T> {
      * return balanced node
      */
     private TreeNode<T> balance(TreeNode<T> h) {
-        // TODO
+
+        if (isRed(h.rightChild)) {
+            h  = rotateLeft(h);
+        }
+        if (isRed(h.leftChild) && isRed(h.leftChild.leftChild)) {
+            h = rotateRight(h);
+        }
+        if (isRed(h.leftChild) && isRed(h.rightChild)) {
+            h = flipColors(h);
+        }
         return h;
+
+
     }
 
 
@@ -65,6 +90,9 @@ public class RedBlackTree<T extends Comparable<T>> extends BinarySearchTree<T> {
     @Override
     TreeNode<T> insert(TreeNode<T> h, T key) {
         h = super.insert(h, key);
+        if (h != null) {
+            h = balance(h);
+        }
         // TODO: use balance to correct for the three rotation cases
         return h;
     }
