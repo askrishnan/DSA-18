@@ -1,13 +1,11 @@
-package divide_and_conquer;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class RadioTowers {
-    public static class Tower {
-        public double x;
-        public double y;
-        public Tower(double x, double y) {
+    static class Tower {
+        double x, y;
+        Tower(double x, double y) {
             this.x = x;
             this.y = y;
         }
