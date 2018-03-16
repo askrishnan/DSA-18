@@ -58,7 +58,7 @@ public class PeakFinding {
 
 
     public static int findOneDPeak(int[] nums) {
-        // O(logN)
+        // Runtime: O(logN)
         int lo = 0;
         int hi = nums.length;
         while (lo < hi) { // recurses while the lo value is below the hi value
@@ -78,6 +78,7 @@ public class PeakFinding {
     }
 
     public static int[] findTwoDPeak(int[][] nums) {
+        // Runtime: O(N) + O(N/2) + O(N/4).... = O(2N) = O(N)
         // setting lo and hi values for x and y
         int xLo = 0;
         int xHi = nums.length;
