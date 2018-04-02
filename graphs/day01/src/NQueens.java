@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
+// Time : O(n * n!)
+// Space : O(n^2)
 
 public class NQueens {
 
@@ -48,11 +50,35 @@ public class NQueens {
         return B;
     }
 
-
     public static List<char[][]> nQueensSolutions(int n) {
-        // TODO
         List<char[][]> answers = new ArrayList<>();
+        // Create and populate queens array.
+        char[][] queens_array = new char[n][n];
+        int[] cols = new int[n];
+        for (int i = 0; i < n; i++) {
+            for (int j=0; j<n; j++) {
+                queens_array[i][j] = '.';
+            }
+        }
+        // Recursively traverse row-by-row
+        answers = nQueensRec(queens_array, 0, cols, answers);
         return answers;
     }
 
+    public static List<char[][]> nQueensRec(char[][] answers, int r, int[] c, List<char[][]> status) {
+        if (r == answers.length) {
+            status.add(copyOf(answers));
+            return status;
+        }
+        for (int i=0; i < answers.length; i++) {
+            if (c[i] == 0 && !checkDiagonal(answers, r, i)) {
+                c[i] = 1;
+                answers[r][i] = 'Q';
+                nQueensRec(answers, r+1, c, status);
+                answers[r][i] = '.';
+                c[i] = 0;
+            }
+        }
+        return status;
+    }
 }
