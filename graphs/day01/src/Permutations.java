@@ -1,8 +1,12 @@
+<<<<<<< HEAD
 import java.util.HashSet;
+=======
+>>>>>>> fa3f8b78319c86d5c534e7e4aca1060986f5e6b1
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
+<<<<<<< HEAD
 /**
  * Space: O(N*N!)
  * Time: O(N!)
@@ -29,6 +33,13 @@ public class Permutations {
         Set<Integer> unused = new HashSet<>(A);
         unused.addAll(A); //sets don't store duplicates
         backtrack(curr, unused, permutations);
+=======
+public class Permutations {
+
+    public static List<List<Integer>> permutations(List<Integer> A) {
+        // TODO
+        List<List<Integer>> permutations = new LinkedList<>();
+>>>>>>> fa3f8b78319c86d5c534e7e4aca1060986f5e6b1
         return permutations;
     }
 

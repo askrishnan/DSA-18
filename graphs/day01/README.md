@@ -4,7 +4,13 @@ This homework is due on **Next Monday (April 2) at 10pm**.
 
 # Resources
 
+<<<<<<< HEAD
 https://www.cs.utexas.edu/~scottm/cs314/handouts/slides/Topic13RecursiveBacktracking.pdf
+=======
+- [U Texas Slides](https://www.cs.utexas.edu/~scottm/cs314/handouts/slides/Topic13RecursiveBacktracking.pdf)
+- [Stanford PDF](https://drive.google.com/open?id=1PoNEWRAI6s7em0eHVPgQAL2l-2__eq4l)
+- [Our Slides](https://drive.google.com/open?id=1Cu_24HYXFxT4x29JgURj60sF4KTPH3Uh6E0ARDguJqU)
+>>>>>>> fa3f8b78319c86d5c534e7e4aca1060986f5e6b1
 
 # Learning Goals
 

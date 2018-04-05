@@ -26,4 +26,16 @@ public class CryparithmeticTest {
         Map<Character, Integer> m = Cryptarithmetic.solvePuzzle("BLACK", "COFFEE", "THEBEST");
         assertTrue(Cryptarithmetic.validSolution("BLACK", "COFFEE", "THEBEST", m));
     }
+<<<<<<< HEAD
+=======
+
+    @Test
+    public void four() {
+        // This test will be reealllly slow, unless you did some optimizations (as mentioned in the README)
+        // With optimizations, this should run instantly
+        // One solution is 24766987 + 1849677 = 26616664
+        Map<Character, Integer> m = Cryptarithmetic.solvePuzzle("BENJAMIN", "ZIEMANN", "COOLDUDE");
+        assertTrue(Cryptarithmetic.validSolution("BENJAMIN", "ZIEMANN", "COOLDUDE", m));
+    }
+>>>>>>> fa3f8b78319c86d5c534e7e4aca1060986f5e6b1
 }

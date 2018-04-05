@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+<<<<<<< HEAD
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -61,3 +62,15 @@ public class CoinsOnAClock {
     }
 }
 
+=======
+import java.util.List;
+
+public class CoinsOnAClock {
+
+    public static List<char[]> coinsOnAClock(int pennies, int nickels, int dimes, int hoursInDay) {
+        // TODO
+        List<char[]> result = new ArrayList<>();
+        return result;
+    }
+}
+>>>>>>> fa3f8b78319c86d5c534e7e4aca1060986f5e6b1

@@ -48,6 +48,7 @@ public class NQueens {
         return B;
     }
 
+<<<<<<< HEAD
     /**
      * Space: O(N^2) -> array of 2D arrays ?
      * Time: O(N!*N)
@@ -82,4 +83,13 @@ public class NQueens {
         }
         return answers;
     }
+=======
+
+    public static List<char[][]> nQueensSolutions(int n) {
+        // TODO
+        List<char[][]> answers = new ArrayList<>();
+        return answers;
+    }
+
+>>>>>>> fa3f8b78319c86d5c534e7e4aca1060986f5e6b1
 }
