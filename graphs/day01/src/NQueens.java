@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
+// Time : O(n * n!)
+// Space : O(n^2)
 
 public class NQueens {
 
@@ -49,6 +51,7 @@ public class NQueens {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     /**
      * Space: O(N^2) -> array of 2D arrays ?
      * Time: O(N!*N)
@@ -85,11 +88,42 @@ public class NQueens {
     }
 =======
 
+=======
+>>>>>>> a4810f1ec3eb791f82a5f3fb04c713af094b6144
     public static List<char[][]> nQueensSolutions(int n) {
-        // TODO
         List<char[][]> answers = new ArrayList<>();
+        // Create and populate queens array.
+        char[][] queens_array = new char[n][n];
+        int[] cols = new int[n];
+        for (int i = 0; i < n; i++) {
+            for (int j=0; j<n; j++) {
+                queens_array[i][j] = '.';
+            }
+        }
+        // Recursively traverse row-by-row
+        answers = nQueensRec(queens_array, 0, cols, answers);
         return answers;
     }
 
+<<<<<<< HEAD
 >>>>>>> fa3f8b78319c86d5c534e7e4aca1060986f5e6b1
 }
+=======
+    public static List<char[][]> nQueensRec(char[][] answers, int r, int[] c, List<char[][]> status) {
+        if (r == answers.length) {
+            status.add(copyOf(answers));
+            return status;
+        }
+        for (int i=0; i < answers.length; i++) {
+            if (c[i] == 0 && !checkDiagonal(answers, r, i)) {
+                c[i] = 1;
+                answers[r][i] = 'Q';
+                nQueensRec(answers, r+1, c, status);
+                answers[r][i] = '.';
+                c[i] = 0;
+            }
+        }
+        return status;
+    }
+}
+>>>>>>> a4810f1ec3eb791f82a5f3fb04c713af094b6144

@@ -18,6 +18,7 @@ public class HeapSort extends SortAlgorithm {
     // Corrects the position of element indexed i by sinking it.
     // Use either recursion or a loop to then sink the child
     public void sink(int i) {
+<<<<<<< HEAD
         int leftChild = leftChild(i);
         int rightChild = rightChild(i);
         int childIndex = i;
@@ -36,6 +37,22 @@ public class HeapSort extends SortAlgorithm {
             heap[i] = heap[childIndex];
             heap[childIndex] = temp;
             sink(childIndex);
+=======
+        int child_index = i;
+        if (size > leftChild(i)) {
+            if(heap[leftChild(i)] > heap[i]) {
+                child_index = leftChild(i);
+            }
+        }
+        if (size > rightChild(i)) {
+            if (heap[rightChild(i)] > heap[child_index]) {
+                child_index = rightChild(i);
+            }
+        }
+        if (child_index != i) {
+            swap(heap, child_index, i);
+            sink(child_index);
+>>>>>>> a4810f1ec3eb791f82a5f3fb04c713af094b6144
         }
     }
 
@@ -55,20 +72,30 @@ public class HeapSort extends SortAlgorithm {
      * Worst-case runtime: O(nlogn)
      * Average-case runtime: O(nlogn)
      *
+<<<<<<< HEAD
      * Space-complexity:O(1)
+=======
+     * Space-complexity: O(1)
+>>>>>>> a4810f1ec3eb791f82a5f3fb04c713af094b6144
      */
     @Override
     public int[] sort(int[] array) {
         heapify(array);
-
+        size = array.length;
         for (int i=size-1; i>0; i--) {
+<<<<<<< HEAD
             int temp = heap[0];
             heap[0] = heap[i];
             heap[i] = temp;
+=======
+            int temp = array[i];
+            array[i] = array[0];
+            array[0] = temp;
+>>>>>>> a4810f1ec3eb791f82a5f3fb04c713af094b6144
             size--;
             sink(0);
         }
 
-        return heap;
+        return array;
     }
 }

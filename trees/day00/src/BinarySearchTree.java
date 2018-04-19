@@ -1,6 +1,16 @@
+<<<<<<< HEAD
 import jdk.nashorn.api.tree.Tree;
 
 import java.util.LinkedList;
+=======
+<<<<<<< HEAD
+import jdk.nashorn.api.tree.Tree;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+=======
+>>>>>>> 1c26bfec866394d2c6a63434e361921836ce41ab
+>>>>>>> a4810f1ec3eb791f82a5f3fb04c713af094b6144
 import java.util.List;
 
 public class BinarySearchTree<T extends Comparable<T>> {
@@ -30,7 +40,27 @@ public class BinarySearchTree<T extends Comparable<T>> {
             add(k);
     }
 
+<<<<<<< HEAD
+    // O(N) runtime.
     public List<T> inOrderTraversal() {
+        List <T> solution = new ArrayList<>();
+        inOrderTraversalRecursive(root, solution);
+        return solution;
+
+    }
+    public void inOrderTraversalRecursive(TreeNode<T> current, List <T> solution) {
+        if (current != null) {
+            if (current.hasLeftChild()) {
+                inOrderTraversalRecursive(current.leftChild, solution);
+            }
+            solution.add(current.key);
+            if (current.hasRightChild()) {
+                inOrderTraversalRecursive(current.rightChild, solution);
+            }
+        }
+=======
+    public List<T> inOrderTraversal() {
+<<<<<<< HEAD
         // Worst Case Runtime: O(N) -> going through each element once
         List<T> inOrder = new LinkedList<>();
         TreeNode<T> curr = findMin(root);
@@ -44,6 +74,11 @@ public class BinarySearchTree<T extends Comparable<T>> {
         }
         inOrder.add(curr.key);
         return inOrder;
+=======
+        // TODO
+        return null;
+>>>>>>> 1c26bfec866394d2c6a63434e361921836ce41ab
+>>>>>>> a4810f1ec3eb791f82a5f3fb04c713af094b6144
     }
 
     /**
@@ -83,9 +118,23 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
         else {
             // Case 3: two children
+<<<<<<< HEAD
             replacement = findPredecessor(n);
             delete(replacement); //replaces the replacement value
             replacement.moveChildrenFrom(n); //moves children from deleted value to its replacement
+=======
+<<<<<<< HEAD
+            replacement = n.rightChild;
+            while (replacement.leftChild != null) {
+                replacement = replacement.leftChild;
+            }
+            delete(replacement);
+            replacement.moveChildrenFrom(n);
+=======
+            // TODO
+            replacement = null;
+>>>>>>> 1c26bfec866394d2c6a63434e361921836ce41ab
+>>>>>>> a4810f1ec3eb791f82a5f3fb04c713af094b6144
         }
 
         // Put the replacement in its correct place, and set the parent.
@@ -113,7 +162,48 @@ public class BinarySearchTree<T extends Comparable<T>> {
         return null;
     }
 
+<<<<<<< HEAD
     // Worst Case Runtime: 0(N) for descending sorted BST
+=======
+<<<<<<< HEAD
+    // O(log(n))
+    private TreeNode<T> findPredecessor(TreeNode<T> n) {
+        TreeNode currentNode = n;
+        if (n.hasLeftChild()) {
+            // Find the rightmost leaf.
+            currentNode = n.leftChild;
+            while (currentNode.hasRightChild()) {
+                currentNode = currentNode.rightChild;
+            }
+        }
+        else {
+            currentNode = n.parent;
+            while (currentNode != null && n == currentNode.leftChild) {
+                n = currentNode;
+                currentNode = currentNode.parent;
+            }
+        }
+        return currentNode;
+    }
+
+    private TreeNode<T> findSuccessor(TreeNode<T> n) {
+        TreeNode currentNode = n;
+        if (currentNode.hasRightChild()) {
+            currentNode = n.rightChild;
+            while (currentNode.hasLeftChild()) {
+                currentNode = currentNode.leftChild;
+            }
+        }
+        else {
+            currentNode = n.parent;
+            while (currentNode != null && n == currentNode.rightChild) {
+                n = currentNode;
+                currentNode = currentNode.parent;
+            }
+        }
+        return currentNode;
+=======
+>>>>>>> a4810f1ec3eb791f82a5f3fb04c713af094b6144
     private TreeNode<T> findPredecessor(TreeNode<T> n) {
         if (n.hasLeftChild()) {
             //finds the largest value below n
@@ -156,6 +246,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
         }
         // if nothing else works
         return null;
+>>>>>>> 1c26bfec866394d2c6a63434e361921836ce41ab
     }
 
     private TreeNode<T> findMin(TreeNode<T> n){

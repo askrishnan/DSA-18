@@ -49,13 +49,64 @@ public class PeakFinding {
 
 
     public static int findOneDPeak(int[] nums) {
-        // TODO
-        return 0;
+        // O(log(n))
+        return findOneDPeakRecursive(nums, 0, nums.length);
+    }
+
+    public static int findOneDPeakRecursive(int [] nums, int low, int high) {
+        // Check that it is in the array.
+        if (high < low) {
+            return -1;
+        }
+
+        int mid = (high + low)/2;
+        // Conquer
+        int placement = peakOneD(mid, nums);
+        // Divide/Combine
+        if (placement == -1) {
+            return findOneDPeakRecursive(nums, low, mid);
+        }
+        else if (placement == 1) {
+            return findOneDPeakRecursive(nums, mid + 1, high);
+        }
+        else {
+            return mid;
+        }
     }
 
     public static int[] findTwoDPeak(int[][] nums) {
-        // TODO
-        return null;
+        // O(N)
+        return findTwoDPeakRecursive(nums, 0, nums[0].length, 0, nums.length, true);
     }
 
-}
+    public static int[] findTwoDPeakRecursive(int [][] nums, int xLow, int xHigh, int yLow, int yHigh, boolean xCol) {
+
+        if (xLow > xHigh || yLow > yHigh) {
+            return null;
+        }
+        if (xCol) {
+            int xMid = (xLow + xHigh) / 2;
+            int yMax = maxYIndex(xMid, yLow, yHigh, nums);
+            // Conquer
+            int xPeak = peakX(xMid, yMax, nums);
+            // Divide/Combine
+            if (xPeak == -1) {
+                return findTwoDPeakRecursive(nums, xLow, xMid, yLow, yHigh, false);
+            } else if (xPeak == 1) {
+                return findTwoDPeakRecursive(nums, xMid + 1, xHigh, yLow, yHigh, false);
+            } else {
+                return new int[]{yMax, xMid};
+            }
+        } else {
+            int yMid = (xLow + xHigh) / 2;
+            int xMax = maxXIndex(yMid, xLow, xHigh, nums);
+            int yPeak = peakY(xMax, yMid, nums);
+            if (yPeak == -1) {
+                return findTwoDPeakRecursive(nums, xLow, xHigh, yLow, yMid, true);
+            } else if (yPeak == 1) {
+                return findTwoDPeakRecursive(nums, xLow, xHigh, yMid + 1, yHigh, true);
+            } else {
+                return new int[]{yMid, xMax};
+            }
+        }
+    }}

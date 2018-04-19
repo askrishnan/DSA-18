@@ -1,6 +1,11 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 public class Problems {
 
     public static int leastSum(int[] A) {
+<<<<<<< HEAD
         // runtime O(NlogN)
         AVLTree<Integer> avl = new AVLTree<>();
         TreeNode<Integer> min;
@@ -40,4 +45,29 @@ public class Problems {
         }
         return intNum;
     }
+=======
+        int[] bins = new int[10];
+        int first = 0, second = 0;
+
+        for (int i = 0; i < A.length; i++) {
+            bins[A[i]]++;
+        }
+
+        boolean a = true;
+
+        for (int i = 0; i < bins.length; i++ ) {
+            if (bins[i] > 0) {
+                while (bins[i] > 0) {
+                    if (a) {
+                        first = first * 10 + i;
+                    } else {
+                        second = second * 10 + i;
+                    }
+                    a = !(a);
+                    bins[i]--;
+                }
+            }
+        }
+        return first + second; }
+>>>>>>> a4810f1ec3eb791f82a5f3fb04c713af094b6144
 }

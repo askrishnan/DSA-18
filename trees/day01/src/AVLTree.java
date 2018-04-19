@@ -9,12 +9,19 @@ public class AVLTree<T extends Comparable<T>> extends BinarySearchTree<T> {
     TreeNode<T> delete(TreeNode<T> n, T key) {
         n = super.delete(n, key);
         if (n != null) {
+<<<<<<< HEAD
             // update the height of the tree using the height of the left and right child
             // return balance(n)
             n.height = height(n);
             return balance(n);
+=======
+            n.height = height(n);
+            return balance(n);
         }
-        return null;
+        else {
+            return null;
+>>>>>>> a4810f1ec3eb791f82a5f3fb04c713af094b6144
+        }
     }
 
     /**
@@ -24,10 +31,16 @@ public class AVLTree<T extends Comparable<T>> extends BinarySearchTree<T> {
     TreeNode<T> insert(TreeNode<T> n, T key) {
         n = super.insert(n, key);
         if (n != null) {
+<<<<<<< HEAD
             // update the height of the tree using the height of the left and right child
             // return balance(n)
             n.height = height(n);
             return balance(n);
+=======
+            n.height = height(n);
+            return balance(n);
+
+>>>>>>> a4810f1ec3eb791f82a5f3fb04c713af094b6144
         }
         return null;
     }
@@ -55,9 +68,14 @@ public class AVLTree<T extends Comparable<T>> extends BinarySearchTree<T> {
         if (n == null) {
             return -1;
         }
+<<<<<<< HEAD
         else {
             return max(height(n.leftChild), height(n.rightChild)) + 1;
         }
+=======
+        return (1 + Math.max(height(n.leftChild), height(n.rightChild)));
+
+>>>>>>> a4810f1ec3eb791f82a5f3fb04c713af094b6144
     }
 
     public int height() {
@@ -66,6 +84,7 @@ public class AVLTree<T extends Comparable<T>> extends BinarySearchTree<T> {
 
     // Restores the AVL tree property of the subtree. Return the head of the new subtree
     TreeNode<T> balance(TreeNode<T> n) {
+<<<<<<< HEAD
 
         // Right Heavy
         if (balanceFactor(n) >= 2) {
@@ -85,6 +104,22 @@ public class AVLTree<T extends Comparable<T>> extends BinarySearchTree<T> {
             n = rotateRight(n); // w/o if statement, leftChild is not right heavy (left.left)
         }
         return n;
+=======
+        if (balanceFactor(n) >= 2) {
+            if (balanceFactor(n.rightChild) < 0) {
+                n.rightChild = rotateRight(n.rightChild);
+            }
+            n = rotateLeft(n);
+        }
+        if (balanceFactor(n) <= -2) {
+            if (balanceFactor(n.leftChild) > 0) {
+                n.leftChild = rotateLeft(n.leftChild);
+            }
+            n = rotateRight(n);
+        }
+        return n;
+
+>>>>>>> a4810f1ec3eb791f82a5f3fb04c713af094b6144
     }
 
     /**
@@ -102,6 +137,7 @@ public class AVLTree<T extends Comparable<T>> extends BinarySearchTree<T> {
      * Perform a right rotation on node `n`. Return the head of the rotated tree.
      */
     private TreeNode<T> rotateRight(TreeNode<T> n) {
+<<<<<<< HEAD
         TreeNode<T> m, beta;
         m = n.leftChild;
         beta = m.rightChild;
@@ -111,12 +147,23 @@ public class AVLTree<T extends Comparable<T>> extends BinarySearchTree<T> {
         n.height = height(n);
         m.height = height(m);
         return m;
+=======
+        TreeNode<T> x = n.leftChild;
+        TreeNode<T> b = x.rightChild;
+        x.rightChild = n;
+        n.leftChild = b;
+
+        n.height = height(n);
+        x.height = height(x);
+        return x;
+>>>>>>> a4810f1ec3eb791f82a5f3fb04c713af094b6144
     }
 
     /**
      * Perform a left rotation on node `n`. Return the head of the rotated tree.
      */
     private TreeNode<T> rotateLeft(TreeNode<T> n) {
+<<<<<<< HEAD
         TreeNode<T> m, beta;
         m = n.rightChild;
         beta = m.leftChild;
@@ -126,5 +173,14 @@ public class AVLTree<T extends Comparable<T>> extends BinarySearchTree<T> {
         n.height = height(n);
         m.height = height(m);
         return m;
+=======
+        TreeNode<T> x = n.rightChild;
+        TreeNode<T> b = x.leftChild;
+        x.leftChild = n;
+        n.rightChild = b;
+        n.height = 1 + Math.max(height(n.rightChild), height(n.leftChild));
+        x.height = 1 + Math.max(height(x.rightChild), height(x.leftChild));
+        return x;
+>>>>>>> a4810f1ec3eb791f82a5f3fb04c713af094b6144
     }
 }
