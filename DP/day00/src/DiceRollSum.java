@@ -9,7 +9,7 @@ public class DiceRollSum {
      * 4) Recursion: I recurse through each value of n, subtracting the value of the rolls and add 1 to the number of sequences when n = 0
      * 5) Solve: DP[N] is the sum of all of the sequences that result from the recursions
      */
-    // Runtime: O(N*1)
+    // Runtime: O(N)
     // Space: 0(N)
     public static int diceRollSumRecurs(int n, HashMap<Integer, Integer> memo) {
         // base case
