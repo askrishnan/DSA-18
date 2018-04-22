@@ -2,7 +2,7 @@ import java.util.HashMap;
 
 public class DiceRollSum {
     /**
-     * DYNAMIC PROGRAMMING STEPS
+     * STEPS
      * 1) Define: DP[i] = number of dice rolls needs for a value of N
      * 2) Guess: Will 1, 2, 3, 4, 5, 6 get me to the value of N?
      * 3) RR: DP[i] = DP[n - 1] + DP[n - 2] + DP[n - 3] + DP[n - 4] + DP[n - 5] + DP[n - 6]

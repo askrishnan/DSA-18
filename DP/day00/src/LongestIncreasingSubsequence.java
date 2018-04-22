@@ -1,6 +1,6 @@
 public class LongestIncreasingSubsequence {
     /**
-     * DYNAMIC PROGRAMMING STEPS
+     * STEPS
      * 1) Define: DP[i] = length of subsequence
      * 2) Guess: Which values will create the longest increasing subsequence?
      * 3) RR: DP[i] = DP[orev longest subsequence that works] + 1
